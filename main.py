@@ -29,8 +29,6 @@ from dotenv import load_dotenv
 
 #1fn----------> libs/modules 
 
-load_dotenv()
-
 #2st----------> logging for errors 
 
 logging.basicConfig(level = logging.INFO)
@@ -41,7 +39,11 @@ logging.basicConfig(level = logging.INFO)
 
 #3st----------> bot settings  
 
-TOKEN="YOUR_TELEGRAM_BOT_API_TOKEN"
+load_dotenv()
+
+TOKEN = os.getenv("BOT_TOKEN")
+if not TOKEN:
+    raise RuntimeError("BOT_TOKEN не найден. Добавьте его в файл .env")
 
 bot = Bot(token=TOKEN)
 
@@ -53,7 +55,7 @@ dp = Dispatcher()
 
 #4st---------> ADMIN settings
 
-ADMIN_ID_RAW ="YOUR_ADMIN_ID_NOT_USERNAME"
+ADMIN_ID_RAW = os.getenv("ADMIN_ID_RAW", "")
 
 try:
     ADMIN_ID = int(ADMIN_ID_RAW)
