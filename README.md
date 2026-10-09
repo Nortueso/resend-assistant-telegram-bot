@@ -1,8 +1,11 @@
 # 🤖 Telegram Assistant Bot
 
 [![Python](https://shields.io)](https://python.org)
+
 [![Aiogram](https://shields.io)](https://github.com)
+
 [![Render Deploy](https://shields.io)](https://render.com)
+
 [![License: MIT](https://shields.io)](https://opensource.org)
 
 A convenient Telegram feedback and contact bot designed for developers, freelancers, and content creators. It acts as your **personal digital assistant**: receiving messages from potential employers, clients, or recruiters and instantly forwarding them to you with the author's contact details.
