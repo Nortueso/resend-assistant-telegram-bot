@@ -20,6 +20,7 @@ import os
 
 #---------- from ... import ...
 
+from aiohttp import web 
 from aiogram import Bot, Dispatcher, F, types
 from aiogram.filters import CommandStart
 from aiogram.fsm.context import FSMContext
@@ -37,7 +38,21 @@ logging.basicConfig(level = logging.INFO)
 
 #2fn----------> logging for errors 
 
+#unknown>
+async def health(request):
+    return web.Response(text="ok")
 
+async def main():
+    app = web.Application()
+    app.router.add_get("/", health)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    port = int(os.getenv("PORT", 10000))
+    site = web.TCPSite(runner, "0.0.0.0", port)
+    await site.start()
+
+    print("🚀 Бот-ассистент Nortueso готов к приёму сообщений...")
+    await dp.start_polling(bot)
 
 #3st----------> bot settings  
 
